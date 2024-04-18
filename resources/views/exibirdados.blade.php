@@ -8,14 +8,10 @@
 
     @if (isset($mensagem))
 <<<<<<< HEAD
-      <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
-=======
-<<<<<<< HEAD
       <div style="background-color:rgb(92, 63, 31);" class="alert alert-info" role="alert">
 =======
       <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
 >>>>>>> ce6fbff2690d22e25f257114b5977ccc9759656c
->>>>>>> 4a083f2e031faec6d454449d2a1c7bcc7d69e92e
         {{ $mensagem }}
       </div>
     @else
