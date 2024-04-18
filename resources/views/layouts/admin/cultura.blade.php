@@ -1,5 +1,5 @@
 <ul  class="navbar-nav sidebar  accordion" id="accordionSidebar">
-    <li class="nav-item" style="background-color:rgb(114, 65, 0); color:;">
+    <li class="nav-item" style="background-color:rgb(114, 65, 0); ">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
       <div class="sidebar-brand-icon">
         <img src="{{ asset('assets/img/logo/logo2.png') }}">

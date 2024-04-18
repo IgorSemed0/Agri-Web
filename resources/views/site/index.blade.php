@@ -13,10 +13,7 @@
  height:1200px; width:100%;
  background-size:cover;
  background-repeat:no-repeat;
-<<<<<<< HEAD
  
-=======
->>>>>>> ce6fbff2690d22e25f257114b5977ccc9759656c
  ">
  <div style="
      color:white;
@@ -25,17 +22,13 @@
  <br><br><br>
     <h1 style="
         color:white;
-<<<<<<< HEAD
         margin-left:4%;
         margin-right: 4px;
-=======
->>>>>>> ce6fbff2690d22e25f257114b5977ccc9759656c
     ">Com a Nossa plataforma podera examinar o estado do seu solo para cultivo!</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ex laudantium magnam voluptates aspernatur. <br>
          Pariatur quod voluptatibus, delectus quae perferendis necessitatibus saepe illum quidem molestiae rerum sunt nobis, sit tenetur!</p>
          <br><br><br><br><br><br><br><br><br>
     <button style="
-<<<<<<< HEAD
         background-color:rgb(107, 116, 0);
         color:rgb(110, 62, 0);
         height:40px;
@@ -44,14 +37,6 @@
         border: 2px solid #0000;       
         
         "><a style="color:white; text-decoration: none;" href="{{ route('culturas') }}">Começar Inspeçao</a></button>
-=======
-        background-color:rgba(40, 142, 54, 0.348);
-        color:rgb(110, 62, 0);
-        height:80px;
-        width:200px;
-        border-radius:8px;
-        "><a style="color:white;" href="">Começar Inspeçao</a></button>
->>>>>>> ce6fbff2690d22e25f257114b5977ccc9759656c
  </div>
 </div>
 
