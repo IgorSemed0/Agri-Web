@@ -4,10 +4,10 @@
 
 @section('conteudo')
   <div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">Exibir Dados</h1>
+    <h1 class="h3 mb-4 text-gray-800" >Exibir Dados</h1>
 
     @if (isset($mensagem))
-      <div class="alert alert-info" role="alert">
+      <div style="background-color:rgb(92, 63, 31);" class="alert alert-info" role="alert">
         {{ $mensagem }}
       </div>
     @else
@@ -40,9 +40,24 @@
               <!-- Adicione mais colunas conforme necessário -->
             </tr>
             @endforeach
+        
+
           </tbody>
+<!-- Scrollable modal -->
+        
+
         </table>
-      </div>
-    @endif
+
+        <br>
+        <p>
+
+    <!-- Scrollable modal -->
+
+        <!-- Scrollable modal -->
+ </div>
+
+ @endif
+ 
   </div>
+  
 @endsection

@@ -41,5 +41,11 @@ class DadosController extends Controller
 
         return view('exibirdados', ['dados' => $dados]);
     }
+    public function culturas(){
+        return view('site.culturas');
+    }
+    public function home(){
+        return view('site.index');
+    }
 
 }
