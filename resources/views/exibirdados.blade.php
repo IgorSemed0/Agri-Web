@@ -7,7 +7,7 @@
     <h1 class="h3 mb-4 text-gray-800">Exibir Dados</h1>
 
     @if (isset($mensagem))
-      <div class="alert alert-info" role="alert">
+      <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
         {{ $mensagem }}
       </div>
     @else

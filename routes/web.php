@@ -10,3 +10,4 @@ Route::get('/', function () {
 });
 
 Route::get('/dados', [DadosController::class, 'exibirdados'])->name('exibirdados');
+
