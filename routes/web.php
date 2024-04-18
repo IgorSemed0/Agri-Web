@@ -11,6 +11,9 @@ Route::get('/', function () {
 
 Route::get('/dados', [DadosController::class, 'exibirdados'])->name('exibirdados');
 
+<<<<<<< HEAD
 Route::get('/home', [DadosController::class, 'home'])->name('home');
 Route::get('/cultura', [DadosController::class, 'culturas'])->name('culturas');
 
+=======
+>>>>>>> ce6fbff2690d22e25f257114b5977ccc9759656c
