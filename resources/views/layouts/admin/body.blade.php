@@ -11,12 +11,12 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
-        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+        <nav class="navbar navbar-expand navbar-dark mb-4 static-top">
           <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
           <ul class="navbar-nav ml-auto">
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+              <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in"
                 aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">
                   Task
@@ -70,7 +70,7 @@
                   Profile
                 </a>
                 <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-green-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
@@ -90,7 +90,7 @@
         @yield('conteudo')
 
              <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer ">
         <div class="container my-auto py-2">
           <div class="copyright text-center my-auto">
             <span>copyright &copy; Agri-Web

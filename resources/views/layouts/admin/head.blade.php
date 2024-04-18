@@ -11,4 +11,13 @@
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/css/ruang-admin.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+  <style>
+    nav{
+        background-color: rgb(117, 69, 6);
+    }
+    footer{
+        background-color:rgb(117, 69, 6);
+        color:white;
+    }
+  </style>
 </head>
