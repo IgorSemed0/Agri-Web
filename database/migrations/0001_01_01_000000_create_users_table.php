@@ -13,11 +13,7 @@ return new class extends Migration
     {
         schema::create('users', function(Blueprint $table){
             $table->id();
-            $table->string('vc_firstName');
-            $table->string('vc_lastName');
-            $table->string('name');
-            $table->string('vc_gender');
-            $table->string('vc_profile');
+            $table->string('userName');
             $table->string('vc_image');
             $table->string('email');
             $table->string('password');

@@ -12,21 +12,11 @@ class User extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'vc_firstName',
-        'vc_lastName',
-        'name',
-        'vc_gender',
-        'vc_profile',
+        'userName',
         'vc_image',
         'email',
         'password'
     ];
 
     protected $table = 'users';
-
-    public function blogPosts()
-    {
-        return $this->hasMany(BlogPost::class);
-    }
-
 }

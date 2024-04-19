@@ -13,6 +13,8 @@ class DadosController extends Controller
             $dadosValidados = $request->validate([
                 'soilHumidity' => 'required|numeric',
                 'soilTemperature' => 'required|numeric',
+                'airHumidity' => 'required|numeric',
+                'airTemperature' => 'required|numeric',
                 'soilConductivity' => 'required|numeric',
                 'soilPH' => 'required|numeric',
                 'nitrogen' => 'required|numeric',
