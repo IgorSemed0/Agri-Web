@@ -8,7 +8,7 @@
     <h1>Bem Vindo ao nosso site</h1>
     <p></p>
   </div>
-<div style="background-image: url({{ asset('assets/img/logo/4.jpg') }});
+<div style="background-image: url({{ asset('assets/img/logo/1.jpg') }});
  align-contents:center;
  height:1200px; width:100%;
  background-size:cover;
@@ -27,7 +27,11 @@
     ">Com a Nossa plataforma podera examinar o estado do seu solo para cultivo!</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ex laudantium magnam voluptates aspernatur. <br>
          Pariatur quod voluptatibus, delectus quae perferendis necessitatibus saepe illum quidem molestiae rerum sunt nobis, sit tenetur!</p>
-         <br><br><br><br><br><br><br><br><br>
+   <br><br><br><br><br><br><br><br><br>
+      
+
+
+
     <button style="
         background-color:rgb(107, 116, 0);
         color:rgb(110, 62, 0);

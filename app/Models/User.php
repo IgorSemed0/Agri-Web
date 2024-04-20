@@ -24,9 +24,9 @@ class User extends Model
 
     protected $table = 'users';
 
-    public function blogPosts()
+    public function diario()
     {
-        return $this->hasMany(BlogPost::class);
+        return $this->hasMany(Diario::class);
     }
 
 }
