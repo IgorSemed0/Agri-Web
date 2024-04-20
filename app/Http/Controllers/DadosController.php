@@ -77,7 +77,7 @@ public function Diario_index(Diario $diario){
         return view('site.new-diario');
     }
     
-    public function store_Diario(Request $request){
+    public function Diario_store(Request $request){
         dd($request);
         $title=$request->input('title');
         $text=$request->input('text');

@@ -24,16 +24,20 @@
 ">Explore o Mapa Agrícola do Agri-web e saiba quando plantar cada cultura.<br> Navegue pelo mapa para encontrar informações sobre o momento ideal de plantio para cada tipo de planta.<br> Tome decisões informadas e aumente sua produtividade agrícola!
 
 <br> Agri-web O Seu Guia para o Cultivo Ideal!  </p>
-<br><br><br>         <form action="{{route('search')}}" method="get" class="col-3"    >
-                <input type="search" name="search" id="search" class="inp" style="width: 600px;  height:50px;  position: absolute;  border: 1px solid #000000;
- border-radius: 20px; margin-left:95%; padding-top: 2px;padding-left: 50px; color:#000000;
-
-" placeholder="Faça a sua pesquisa na Agri-Web">
-         <svg xmlns="http://www.w3.org/2000/svg" id="sear" width="16" height="23" type="submit" style="position: relative; color:#000000; margin-left:18em; margin-top: 15px;"
-                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+<br><br><br>  
+<div class="d-flex justify-content-center position-relative">
+    <form action="{{route('search')}}" method="get" class="col-6 position-relative ">
+        <div class="input-group">
+            <input type="search" name="search" id="search" class="form-control pl-5 position-absolute top-0 start-0 pt-2  " style="height:50px; width: 120%; max-width: 650px ;border-radius: 20px;" placeholder="Faça a sua pesquisa na Agri-Web">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" fill="currentColor" class="bi bi-search ml-4 mt-3 position-relative top-60 end-0 translate-middle-y" type="submit" style="color:black" viewBox="0 0 16 16" >
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                  </svg>
-            </form>    
+                </svg>
+                
+            
+        </div>
+    </form>
+</div>
+
 
  </div>
 </div>
