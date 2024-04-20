@@ -1,6 +1,6 @@
 <ul  class="navbar-nav sidebar  accordion" id="accordionSidebar" >
     <li class="nav-item" style="background-color:rgb(92, 63, 31); ">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
 
       <div  class="sidebar-brand-text mx-3">Agri-Web</div>
     </a>
@@ -33,19 +33,5 @@
         <span style="font-size: 15px; ">Cultura</span>
       </a>
     </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Usuarios</span>
-        </a>
-        <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('user.create.index') }}">Adicionar</a>
-            <a class="collapse-item" href="{{ route('user.index') }}">Listar</a>
-          </div>
-        </div>
-      </li>
 </ul>
 
