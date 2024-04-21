@@ -1,19 +1,11 @@
 <ul  class="navbar-nav sidebar  accordion" id="accordionSidebar" >
-    <li class="nav-item" style="background-color:rgb(92, 63, 31); ">
+    <li class="nav-item" style="background-color:rgb(92, 63, 31); height: 4.4em; ">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
 
-
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-
-    <div  class="sidebar-brand-text mx-3">Agri-Web</div>
+<div  class="sidebar-brand-text mx-3">Agri-Web</div>
     </a>
 </li>
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">
-        <span style="font-size: 18px;   margin-top: 15px;">Dashboard</span>
-      </a>
-    </li>
+    
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="{{ route('home') }}">
@@ -31,7 +23,6 @@
   <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
 </svg>
         <span style="font-size: 15px; ">Dashboard</span>
-        <span style="font-size: 15px; ">Exibir Dados</span>
       </a>
     </li>
     <li class="nav-item">

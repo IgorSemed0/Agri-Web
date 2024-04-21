@@ -8,9 +8,16 @@
 @else
     @foreach($culturas as $cultura)
     
-    {{$cultura->cultureTittle}}
+    
         {{$cultura->id}}
-        <!-- Adicione aqui o restante das informações que deseja exibir -->
+        <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"> {{$cultura->cultureTittle}}</h5>
+    <p class="card-text">Texto do cartão. Você pode adicionar todo tipo de conteúdo aqui.</p>
+    <a href="#" class="btn btn-primary">Botão</a>
+  </div>
+</div>
+
     @endforeach
 @endif
 
