@@ -12,6 +12,8 @@ class DadoSensor extends Model
         'soilHumidity',
         'soilTemperature',
         'soilConductivity',
+        'airTemperature',
+        'airHumidity',
         'soilPH',
         'nitrogen',
         'phosphorus',

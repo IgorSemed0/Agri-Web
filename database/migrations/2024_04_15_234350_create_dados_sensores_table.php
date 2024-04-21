@@ -17,6 +17,8 @@ class CreateDadosSensoresTable extends Migration
             $table->id();
             $table->decimal('soilHumidity', 8, 2);
             $table->decimal('soilTemperature', 8, 2);
+            $table->decimal('airlHumidity', 8, 2);
+            $table->decimal('airTemperature', 8, 2);
             $table->unsignedInteger('soilConductivity');
             $table->decimal('soilPH', 8, 2);
             $table->unsignedInteger('nitrogen');

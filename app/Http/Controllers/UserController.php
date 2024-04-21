@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,11 +11,11 @@ class UserController extends Controller
     public function index(){
         $data['users']=User::all();
 
-        return view('admin.user.index', $data);
+        return view('user.index', $data);
     }
 
     public function create(){
-        return view('admin.user.create.index');
+        return view('user.create.index');
     }
 
     /**
@@ -28,20 +28,12 @@ class UserController extends Controller
 
         try {
             $request->validate([
-                'vc_firstName' => 'required',
-                'vc_lastName' => 'required',
-                'name' => 'required',
-                'vc_gender' => 'required',
-                'vc_profile' => 'required',
+                'userName' => 'required',
                 'vc_image' => 'required',
                 'email' => 'required',
                 'password' => 'required',
             ],[
-                'vc_firstName.required' => 'O primeiro nome é obrigatório',
-                'vc_lastName.required' => 'O último nome é obrigatório',
-                'name.required' => 'O apelido é obrigatório',
-                'vc_gender.required' => 'O gênero é obrigatório',
-                'vc_profile.required' => 'O perfil é obrigatório',
+                'userName.required' => 'O nome é obrigatório',
                 'vc_image.required' => 'A imagem é obrigatória',
                 'email.required' => 'O e-mail é obrigatório',
                 'password.required' => 'A senha é obrigatória',
@@ -50,11 +42,7 @@ class UserController extends Controller
             $imagePath = $request->file('vc_image')->store('images');
 
             User::create([
-                'vc_firstName'=>$request->vc_firstName,
-                'vc_lastName'=>$request->vc_lastName,
-                'name'=>$request->name,
-                'vc_gender'=>$request->vc_gender,
-                'vc_profile'=>$request->vc_profile,
+                'userName'=>$request->userName,
                 'vc_image' => $imagePath,
                 'email'=>$request->email,
                 'password'=>$request->password
@@ -77,7 +65,7 @@ class UserController extends Controller
     public function edit($id){
         $response['user']=User::find($id);
 
-        return view('admin.user.edit.index',$response);
+        return view('user.edit.index',$response);
     }
 
     /**
@@ -92,36 +80,21 @@ class UserController extends Controller
         try {
 
             $request->validate([
-                'vc_firstName' => 'required',
-                'vc_lastName' => 'required',
-                'name' => 'required',
-                'vc_gender' => 'required',
-                'vc_profile' => 'required',
+                'userName' => 'required',
                 'vc_image' => 'required',
                 'email' => 'required',
                 'password' => 'required',
             ],[
-                'vc_firstName.required' => 'O primeiro nome é obrigatório',
-                'vc_lastName.required' => 'O último nome é obrigatório',
-                'name.required' => 'O apelido é obrigatório',
-                'vc_gender.required' => 'O gênero é obrigatório',
-                'vc_profile.required' => 'O perfil é obrigatório',
+                'userName.required' => 'O primeiro nome é obrigatório',
                 'vc_image.required' => 'A imagem é obrigatória',
                 'email.required' => 'O e-mail é obrigatório',
-                'email.email' => 'Digite um endereço de e-mail válido',
-                'email.unique' => 'Este e-mail já está sendo usado',
                 'password.required' => 'A senha é obrigatória',
-                'password.min' => 'A senha deve ter pelo menos 8 caracteres',
             ]);
 
             $imagePath = $request->file('vc_image')->store('images');
             $user=User::find($id);
             User::findOrFail($id)->update([
-                'vc_firstName'=>$request->vc_firstName,
-                'vc_lastName'=>$request->vc_lastName,
-                'name'=>$request->name,
-                'vc_gender'=>$request->vc_gender,
-                'vc_profile'=>$request->vc_profile,
+                'userName'=>$request->userName,
                 'vc_image' => $imagePath,
                 'email'=>$request->email,
                 'password'=>$request->password
