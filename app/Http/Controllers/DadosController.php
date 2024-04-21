@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Diario;
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
+use App\Models\Cultura;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -56,10 +57,10 @@ class DadosController extends Controller
 
 public function search(Request $request):View{
    
-    $termoPesquisa = $request->input(' search');
-    $culturas= DB::table('cultura')->get();
- 
-    return view('view.cultura', ['culturas' => $culturas]);
+    $termoPesquisa = $request->input('search');
+    $culturas = Cultura::where('cultureTittle', 'LIKE', '%' . $termoPesquisa . '%')->get();
+
+    return view('site.view-cultura', ['culturas' => $culturas]);
 
 
 }
