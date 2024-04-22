@@ -14,14 +14,16 @@ class CulturaController extends Controller
         return view('site.index');
     }
 
-   
+   public function suporte(){
+    return view ("site.suporte");
+   }
 
 public function search(Request $request):View{
    
     $termoPesquisa = $request->input('search');
     $culturas = Cultura::where('cultureTittle', 'LIKE', '%' . $termoPesquisa . '%')->get();
 
-    return view('site.view-cultura', ['culturas' => $culturas]);
+    return view('site.view-cultura', ['culturas' => $culturas,'termoPesquisa'=>$termoPesquisa ]);
 
 
 }
