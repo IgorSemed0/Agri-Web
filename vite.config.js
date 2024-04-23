@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
+            publicDir: 'public', // Esta linha define o diretório público
         }),
     ],
 });

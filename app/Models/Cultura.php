@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cultura extends Model
 {
+    use HasFactory;
     protected $table = 'culturas';
 
     protected $fillable = [
