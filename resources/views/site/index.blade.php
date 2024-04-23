@@ -13,7 +13,7 @@
  height:1200px; width:100%;
  background-size:cover;
  background-repeat:no-repeat;
- 
+
  ">
  <div style="
      color:white;
@@ -38,8 +38,8 @@
         height:40px;
         width:200px;
         border-radius:10px;
-        border: 2px solid #0000;       
-        
+        border: 2px solid #0000;
+
         "><a style="color:white; text-decoration: none;" href="{{ route('culturas') }}">Começar Inspeçao</a></button>
  </div>
 </div>
