@@ -7,7 +7,6 @@
     <h1 class="h3 mb-4 text-gray-800" >Dashboard</h1>
 
     @if (isset($mensagem))
-      <div style="background-color:rgb(92, 63, 31);" class="alert alert-info" role="alert">
       <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
         {{ $mensagem }}
       </div>
@@ -16,7 +15,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
+              
               <th>Umidade do Solo</th>
               <th>Temperatura do Solo</th>
               <th>Umidade do Ar</th>
@@ -29,37 +28,53 @@
             </tr>
           </thead>
           <tbody>
+            
             @foreach ($dados as $dado)
+            
             <tr>
-              <td>{{ $dado->id }}</td>
               <td>{{ $dado->soilHumidity }}</td>
               <td>{{ $dado->soilTemperature }}</td>
-              <td>{{ $dado->airHumidity }}</td>
+              <td>{{ $dado->airlHumidity }}</td>
               <td>{{ $dado->airTemperature }}</td>
               <td>{{ $dado->soilConductivity }}</td>
               <td>{{ $dado->soilPH }}</td>
               <td>{{ $dado->nitrogen }}</td>
               <td>{{ $dado->phosphorus }}</td>
               <td>{{ $dado->potassium }}</td>
+              <br>
             </tr>
+            
+            
             @endforeach
-
+          
+<!-- Scrollable modal -->
+   
 
           </tbody>
-<!-- Scrollable modal -->
-
-
         </table>
 
         <br>
-        <p>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <tbody>
+       @foreach($dadosComuns as $cultura)
+       <div class="card ml-1">
+  <div class="card-body">
+    <h5 class="card-title"> 
+       {{$cultura->cultureTittle}}
+    </h5>
+    </div>
+</div>
+<br>
+       @endforeach
+      </tbody>  
+      </table>
+         
+      </div>
+    @endif
 
     <!-- Scrollable modal -->
 
-        <!-- Scrollable modal -->
- </div>
-
- @endif
+ 
 
   </div>
 

@@ -15,25 +15,46 @@ class DiarioController extends Controller
         return view('site.diario',compact('diario'));
         }
     
-            public function Diario_create() {
+            public function Diario_store() {
     
                 return view('site.new-diario');
             }
     
-            public function Diario_store(Request $request){
+            public function Diario_create(Request $request){
                 dd($request);
-                $title=$request->input('title');
-                $text=$request->input('text');
+                $request->validate([ 'title'=>'required',
+                     'text'=>'required']);
+               
         Diario::creat([
-        'title'=>$title,
-        'text'=>$text
+        'title'=> $request->title,
+        'text'=> $request->text
         ]);
-        return view('site.diario');
+        return redirect()->route('site.diario')->with('success', 'Registro criado com sucesso!');
             }
     
     
-            public function Diario_show(){
-                return view();
+            public function Diario_show( $id){
+            $diarios=Diario::find($id)->all();
+            return view('site.diario-show', ['diarios' => $diarios]);
             }
-    
+
+            public function Diario_update(Request $request, $id){
+                $request->validate([
+                    'title'=>'required',
+                    'text'=>'required'
+                ]);
+                $diario=Diario::find($id);
+                $diario->update([
+                    'title'=>$request->title,
+                    'text'=>$request->text
+                ]);
+                return redirect()->route('site.diario')->with('success', 'Registro atualizado com sucesso!');
+
+            }
+
+            public function delete($id){
+                $diario=Diario::find($id);
+                $diario->delete();
+                return redirect()->route('site.diario')->with('success', 'Registro excluído com sucesso!');
+            }
 }

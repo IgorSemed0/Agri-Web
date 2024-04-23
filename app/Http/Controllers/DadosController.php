@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
-
+use App\Models\Cultura;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use GuzzleHttp\RequestOptions;
 
 
@@ -39,13 +41,21 @@ class DadosController extends Controller
     public function exibirDados()
     {
         $dados = DadoSensor::all();
-
+        $culturas = Cultura::all();
         if ($dados->isEmpty()) {
             return view('exibirdados', ['mensagem' => 'Nenhum dado disponível.']);
         }
-
-        return view('exibirdados', ['dados' => $dados]);
+        
+        $dadosComuns = $culturas->intersect($dados);
+        
+        return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
+        
+       
     }
-
-  
-    }
+   
+    
+    
+    
+   
+       
+}
