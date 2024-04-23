@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
-use App\Models\cultura;
+use App\Models\Cultura;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;

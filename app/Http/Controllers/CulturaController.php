@@ -19,7 +19,7 @@ class CulturaController extends Controller
    }
 
 public function search(Request $request):View{
-   
+
     $termoPesquisa = $request->input('search');
     $culturas = Cultura::where('cultureTittle', 'LIKE', '%' . $termoPesquisa . '%')->get();
 
@@ -27,5 +27,5 @@ public function search(Request $request):View{
 
 
 }
-   
+
 }
