@@ -49,8 +49,6 @@ class DadosController extends Controller
         $dadosComuns = $culturas->intersect($dados);
 
         return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
-
-
     }
 
 

@@ -3,8 +3,11 @@
 @include('layouts.admin.head')
 
 <body id="page-top">
+    @auth
     <div id="wrapper">
         <!-- Sidebar -->
+
+    @endauth
 
         @include('layouts.admin.menu')
         <!-- Sidebar -->
