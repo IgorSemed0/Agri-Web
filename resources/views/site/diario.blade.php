@@ -11,9 +11,9 @@
   <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
 </svg>
     </a>
-   
+
     </div>
-    
+
     @if (isset($mensagem))
 
       <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
@@ -28,22 +28,29 @@ background-repeat:no-repeat;">
 <div style="
     color:white;
     text-align:center;">
- 
+
       </div>
 @else
 @foreach($diario as $diario)
 <div class="card ml-1">
   <div class="card-body">
     <h3 class="card-title"> {{$diario->title}}</h3>
-    
+
     {{$diario->created_at}}
     <br>
    <br>
+   <div class="d-flex">
     <a href="{{route('diario_show', $diario->id)}}" class="btn btn-primary">Visualizar</a>
-    <a href="#" class="btn btn-primary ml-3">Apagar</a>
-    
+    <form action="{{ route('delete', ['id' => $diario->id])}}" method="post">
+      @csrf
+      @method('DELETE')
+
+<button type="submit" class="btn btn-primary ml-3">Apagar</button>
+    </form>
+
   </div>
-  
+  </div>
+
 </div>
 
 <br>
