@@ -21,9 +21,8 @@ Route::get('/diario',[DiarioController::class, 'Diario_index'])->name('diario_in
 Route::get('/diario_show{id}',[DiarioController::class, 'Diario_show'])->name('diario_show');
 Route::get('/diario_store',[DiarioController::class,'Diario_store'])->name('diario_store');
 Route::post('/diario_create', [DiarioController::class, 'Diario_create'])->name('diario_create');
-
 Route::put('/update/{id}',[DiarioController::class, 'Diario_update'])->name('diario_update');
-/*Igor-Login/Register(Jetstream.Liveware)*/
+/*Igor-Login/Rester(Jetstream.Liveware)*/
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
