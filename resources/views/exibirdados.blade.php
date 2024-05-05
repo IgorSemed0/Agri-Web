@@ -61,34 +61,33 @@
                         </tr>
                     `;
                     $('#dataBody').html(newRow);
-                    progressBar.stop().css({
-                        width: '0%'
-                    });
-                    progressBar.animate({
-                        width: '100%'
-                    }, 5000, 'linear');
-                    // Defina aqui o intervalo de tempo em milissegundos()
+                    // Resetar a barra de progresso
+                    progressBar.stop().css({ width: '0%' });
+                    // Atualiza a barra de progresso
+                    progressBar.animate({ width: '100%' }, 20000, 'linear');
+                    // Defina aqui o intervalo de tempo em milissegundos
                     setTimeout(exibirProximoDado, 20000); // 5000 milissegundos = 5 segundos
                 } else {
+                    // Se todos os dados foram exibidos, reinicie o loop
                     index = 0;
-                    $('#dataBody').empty();
+                    $('#dataBody').empty(); // Limpa a tabela
                     exibirProximoDado();
                 }
             }
             exibirProximoDado();
         });
     </script>
-    <br>
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <tbody>
-            @foreach ($dadosComuns as $cultura)
-                <div class="card ml-1">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ $cultura->cultureTittle }}
-                        </h5>
+        <br>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <tbody>
+                @foreach ($dadosComuns as $cultura)
+                    <div class="card ml-1">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ $cultura->cultureTittle }}
+                            </h5>
+                        </div>
                     </div>
-                </div>
-                <br>
-            @endforeach
-        @endsection
+                    <br>
+                @endforeach
+            @endsection

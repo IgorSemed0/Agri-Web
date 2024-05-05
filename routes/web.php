@@ -15,7 +15,6 @@ Route::get('/home', [CulturaController::class, 'home'])->name('home');
 /*Cultura*/
 Route::get('/home', [CulturaController::class, 'home'])->name('home');
 Route::get('/cultura', [CulturaController::class, 'culturas'])->name('culturas');
-Route::get('/suporte', [CulturaController::class, 'suporte'])->name('suporte');
 
 Route::get('/search', [CulturaController::class, 'search'])->name('search');
 /* Diário*/
