@@ -39,16 +39,9 @@ background-repeat:no-repeat;">
     {{$diario->created_at}}
     <br>
    <br>
-   <div class="d-flex">
     <a href="{{route('diario_show', $diario->id)}}" class="btn btn-primary">Visualizar</a>
-    <form action="{{ route('delete', ['id' => $diario->id])}}" method="post">
-      @csrf
-      @method('DELETE')
+    <a href="#" class="btn btn-primary ml-3">Apagar</a>
 
-<button type="submit" class="btn btn-primary ml-3">Apagar</button>
-    </form>
-
-  </div>
   </div>
 
 </div>

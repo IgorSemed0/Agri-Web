@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
 use App\Models\Cultura;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -46,9 +49,23 @@ class DadosController extends Controller
             return view('exibirdados', ['mensagem' => 'Nenhum dado disponível.']);
         }
 
+
         $dadosComuns = $culturas->intersect($dados);
 
         return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
+    }
+
+
+
+
+
+
+}
+        $dadosComuns = $culturas->intersect($dados);
+
+        return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
+
+
     }
 
 
