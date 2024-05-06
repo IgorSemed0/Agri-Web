@@ -22,7 +22,7 @@ Route::get('/diario',[DiarioController::class, 'Diario_index'])->name('diario_in
 Route::get('/diario_show{id}',[DiarioController::class, 'Diario_show'])->name('diario_show');
 Route::get('/diario_store',[DiarioController::class,'Diario_store'])->name('diario_store');
 Route::post('/diario_create', [DiarioController::class, 'Diario_create'])->name('diario_create');
-
+Route::delete('/delete/{id}', [DiarioController::class, 'Diario_delete'])->name('diario_delete');
 Route::put('/update/{id}',[DiarioController::class, 'Diario_update'])->name('diario_update');
 /*Igor*/
 Route::middleware([
