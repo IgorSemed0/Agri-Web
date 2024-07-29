@@ -40,7 +40,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            var dados = {!! json_encode($dados) !!};
+            var dados = @json($dados ?? []);
             var index = 0;
             var progressBar = $('#progressBar');
 
@@ -60,13 +60,13 @@
                             <td>${dado.potassium}</td>
                         </tr>
                     `;
-                    $('#dataBody').html(newRow);
+                    $('#dataBody').append(newRow);
                     // Resetar a barra de progresso
                     progressBar.stop().css({ width: '0%' });
                     // Atualiza a barra de progresso
                     progressBar.animate({ width: '100%' }, 20000, 'linear');
                     // Defina aqui o intervalo de tempo em milissegundos
-                    setTimeout(exibirProximoDado, 20000); // 5000 milissegundos = 5 segundos
+                    setTimeout(exibirProximoDado, 20000); // 20000 milissegundos = 20 segundos
                 } else {
                     // Se todos os dados foram exibidos, reinicie o loop
                     index = 0;
@@ -77,9 +77,11 @@
             exibirProximoDado();
         });
     </script>
-        <br>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <tbody>
+
+    <br>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+            @if(isset($dadosComuns))
                 @foreach ($dadosComuns as $cultura)
                     <div class="card ml-1">
                         <div class="card-body">
@@ -90,4 +92,7 @@
                     </div>
                     <br>
                 @endforeach
-            @endsection
+            @endif
+        </tbody>
+    </table>
+@endsection
