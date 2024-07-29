@@ -11,9 +11,9 @@ class DadoSensor extends Model
     protected $fillable = [
         'soilHumidity',
         'soilTemperature',
-        'soilConductivity',
-        'airTemperature',
         'airHumidity',
+        'airTemperature',
+        'soilConductivity',
         'soilPH',
         'nitrogen',
         'phosphorus',

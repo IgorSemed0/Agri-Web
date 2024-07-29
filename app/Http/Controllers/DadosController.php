@@ -5,10 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
 use App\Models\Cultura;
-use GuzzleHttp\RequestOptions;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
-
 
 class DadosController extends Controller
 {
@@ -26,15 +22,13 @@ class DadosController extends Controller
                 'phosphorus' => 'required|numeric',
                 'potassium' => 'required|numeric',
             ]);
-            DadoSensor::create($dadosValidados);
 
+            DadoSensor::create($dadosValidados);
 
             return response()->json(['status' => 'success', 'message' => 'Dados recebidos e salvos com sucesso.']);
 
         } catch (\Throwable $th) {
-            //throw $th;
-            return response()->json(['status' => 'success', 'message' =>$th]);
-
+            return response()->json(['status' => 'error', 'message' => $th->getMessage()]);
         }
     }
 
@@ -49,7 +43,5 @@ class DadosController extends Controller
         $dadosComuns = $culturas->intersect($dados);
 
         return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
-
-
     }
 }
