@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('site.index');
 });
 
+Route::get('/teste', function() {
+    return view('layouts.admin.body');
+});
+
 /* Cultura */
 Route::get('/home', [CulturaController::class, 'home'])->name('home');
 Route::get('/cultura', [CulturaController::class, 'culturas'])->name('culturas');
