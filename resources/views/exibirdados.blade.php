@@ -11,53 +11,66 @@
             {{ $mensagem }}
         </div>
     @else
-        <div class="chart-container" style="position: relative; height:50vh; width:80vw">
+        <!-- Start Analysis Button and Initial Message -->
+        <div id="startContainer" class="text-center">
+            <p id="startMessage">Click the button to start data analysis.</p>
+            <button id="startButton" class="btn btn-primary">Start Analysis</button>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="chart-container" style="position: relative; height:400px; width:100%; margin-top: 20px;">
             <canvas id="dataChart"></canvas>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="text-center" style="display:none;">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
     @endif
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     $(document).ready(function() {
         var ctx = document.getElementById('dataChart').getContext('2d');
         var dados = @json($dados ?? []);
-        var chartLabels = ["Umidade do Solo", "Temperatura do Solo", "Umidade do Ar", "Temperatura do Ar", "Condutividade do Solo", "pH do Solo", "Nitrogênio", "Fósforo", "Potássio"];
-        var chartData = {
-            labels: chartLabels,
-            datasets: [{
-                label: 'Sensor Data',
-                data: [], // Empty at start
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(201, 203, 207, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(201, 203, 207, 1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
+        var index = 0;
 
         var dataChart = new Chart(ctx, {
             type: 'bar',
-            data: chartData,
+            data: {
+                labels: ['Umidade do Solo', 'Temperatura do Solo', 'Umidade do Ar', 'Temperatura do Ar', 'Condutividade do Solo', 'pH do Solo', 'Nitrogênio', 'Fósforo', 'Potássio'],
+                datasets: [{
+                    label: 'Medições',
+                    data: [], // Initial empty data
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
             options: {
                 scales: {
                     y: {
@@ -67,31 +80,45 @@
             }
         });
 
-        var index = 0;
-
         function updateChart() {
-            if (index < dados.length) {
-                var dado = dados[index++];
-                dataChart.data.datasets[0].data = [
-                    dado.soilHumidity,
-                    dado.soilTemperature,
-                    dado.airHumidity,
-                    dado.airTemperature,
-                    dado.soilConductivity,
-                    dado.soilPH,
-                    dado.nitrogen,
-                    dado.phosphorus,
-                    dado.potassium
-                ];
-                dataChart.update();
-                setTimeout(updateChart, 1000);
-            } else {
-                index = 0;
-                setTimeout(updateChart, 10000);
+            try {
+                if (index < dados.length) {
+                    var dado = dados[index++];
+                    dataChart.data.datasets[0].data = [
+                        dado.soilHumidity,
+                        dado.soilTemperature,
+                        dado.airHumidity,
+                        dado.airTemperature,
+                        dado.soilConductivity,
+                        dado.soilPH,
+                        dado.nitrogen,
+                        dado.phosphorus,
+                        dado.potassium
+                    ];
+                    dataChart.update();
+                    setTimeout(updateChart, 1000); // Update every 20 seconds
+                } else {
+                    index = 0;
+                    setTimeout(updateChart, 1000); // Restart cycle
+                }
+            } catch (error) {
+                alert('Failed to load data. Please try again later.');
+                console.error(error);
             }
         }
 
-        updateChart();
+        $('#startButton').click(function() {
+            $('#startContainer').hide(); // Hide start message and button
+            $('#loadingSpinner').show(); // Show loading spinner
+
+            setTimeout(function() {
+                $('#loadingSpinner').hide(); // Hide loading spinner after delay
+                $('.chart-container').show(); // Show the chart
+                updateChart(); // Start the chart update process
+            }, 1000); // Delay to simulate loading
+        });
+
+        $('.chart-container').hide(); // Hide the chart initially
     });
 </script>
 @endsection
