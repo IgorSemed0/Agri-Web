@@ -104,14 +104,14 @@
                 @yield('conteudo')
 
              <!-- Footer -->
-      <footer class="sticky-footer ">
+      {{-- <footer class="footer bottom-0 ">
         <div class="container my-auto py-2">
           <div class="copyright text-center my-auto">
             <span>copyright &copy; Agri-Web
             </span>
           </div>
         </div>
-      </footer>
+      </footer> --}}
     </div>
   </div>
 <style>

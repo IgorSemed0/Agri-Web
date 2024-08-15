@@ -11,145 +11,87 @@
             {{ $mensagem }}
         </div>
     @else
-        <div class="table-responsive">
-            <div id="progressBarContainer" style="width: 100%; height: 20px; margin-bottom: 20px;">
-                <div id="progressBar" style="width: 0%; height: 100%; background-color: green;"></div>
-            </div>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Umidade do Solo</th>
-                        <th>Temperatura do Solo</th>
-                        <th>Umidade do Ar</th>
-                        <th>Temperatura do Ar</th>
-                        <th>Condutividade do Solo</th>
-                        <th>pH do Solo</th>
-                        <th>Nitrogênio</th>
-                        <th>Fósforo</th>
-                        <th>Potássio</th>
-                    </tr>
-                </thead>
-                <tbody id="dataBody">
-                    <!-- Aqui vamos exibir os dados -->
-                </tbody>
-            </table>
+        <div class="chart-container" style="position: relative; height:50vh; width:80vw">
+            <canvas id="dataChart"></canvas>
         </div>
     @endif
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        var ctx = document.getElementById('dataChart').getContext('2d');
         var dados = @json($dados ?? []);
-        var index = 0;
-        var progressBar = $('#progressBar');
+        var chartLabels = ["Umidade do Solo", "Temperatura do Solo", "Umidade do Ar", "Temperatura do Ar", "Condutividade do Solo", "pH do Solo", "Nitrogênio", "Fósforo", "Potássio"];
+        var chartData = {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Sensor Data',
+                data: [], // Empty at start
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(201, 203, 207, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(201, 203, 207, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
 
-        function exibirProximoDado() {
+        var dataChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var index = 0;
+
+        function updateChart() {
             if (index < dados.length) {
                 var dado = dados[index++];
-                var newRow = `
-                    <tr>
-                        <td>${dado.soilHumidity}</td>
-                        <td>${dado.soilTemperature}</td>
-                        <td>${dado.airHumidity}</td>
-                        <td>${dado.airTemperature}</td>
-                        <td>${dado.soilConductivity}</td>
-                        <td>${dado.soilPH}</td>
-                        <td>${dado.nitrogen}</td>
-                        <td>${dado.phosphorus}</td>
-                        <td>${dado.potassium}</td>
-                    </tr>
-                `;
-                $('#dataBody').append(newRow);
-                progressBar.stop().css({ width: '0%' });
-                progressBar.animate({ width: '100%' }, 20000, 'linear');
-                setTimeout(exibirProximoDado, 20000);
+                dataChart.data.datasets[0].data = [
+                    dado.soilHumidity,
+                    dado.soilTemperature,
+                    dado.airHumidity,
+                    dado.airTemperature,
+                    dado.soilConductivity,
+                    dado.soilPH,
+                    dado.nitrogen,
+                    dado.phosphorus,
+                    dado.potassium
+                ];
+                dataChart.update();
+                setTimeout(updateChart, 1000);
             } else {
                 index = 0;
-                $('#dataBody').empty();
-                exibirProximoDado();
+                setTimeout(updateChart, 10000);
             }
         }
-        exibirProximoDado();
+
+        updateChart();
     });
-</script>
-
-<br>
-<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <tbody>
-        @if(isset($dadosComuns))
-            @foreach ($dadosComuns as $cultura)
-                <div class="card ml-1">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ $cultura->cultureTittle }}
-                        </h5>
-                    </div>
-                </div>
-                <br>
-            @endforeach
-        @endif
-    </tbody>
-</table>
-<div class="container">
-    <div class="row my-3">
-        <div class="col">
-            <h4>Bootstrap 4 Chart.js - Bar Chart</h4>
-        </div>
-    </div>
-    <div class="row my-2">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="chBar" height="100"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    var chBar = document.getElementById("chBar");
-var chartData = {
-  labels: ["S", "M", "T", "W", "T", "F", "S"],
-  datasets: [{
-    data: [589, 445, 483, 503, 689, 692, 634],
-    backgroundColor: colors[0]
-  },
-  {
-    data: [209, 245, 383, 403, 589, 692, 580],
-    backgroundColor: colors[1]
-  },
-  {
-    data: [489, 135, 483, 290, 189, 603, 600],
-    backgroundColor: colors[2]
-  },
-  {
-    data: [639, 465, 493, 478, 589, 632, 674],
-    backgroundColor: colors[4]
-  }]
-};
-if (chBar) {
-  new Chart(chBar, {
-  type: 'bar',
-  data: chartData,
-  options: {
-    scales: {
-      xAxes: [{
-        barPercentage: 0.4,
-        categoryPercentage: 0.5
-      }],
-      yAxes: [{
-        ticks: {
-          beginAtZero: false
-        }
-      }]
-    },
-    legend: {
-      display: false
-    }
-  }
-  });
-}
 </script>
 @endsection
