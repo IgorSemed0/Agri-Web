@@ -18,8 +18,18 @@
         </div>
 
         <!-- Chart Container -->
-        <div class="chart-container" style="position: relative; height:400px; width:100%; margin-top: 20px;">
+        <div id="barChartContainer" class="chart-container" style="position: relative; height:400px; width:100%; margin-top: 20px;">
             <canvas id="dataChart"></canvas>
+        </div>
+
+        <!-- Donut Chart Container (Initially Hidden) -->
+        <div id="donutChartContainer" class="chart-container" style="position: relative; height:400px; width:100%; margin-top: 20px; display:none;">
+            <canvas id="donutChart"></canvas>
+        </div>
+
+        <!-- Average Values Display -->
+        <div id="averageValuesContainer" class="text-center" style="margin-top: 20px; display:none;">
+            <!-- Will be filled dynamically with average values -->
         </div>
 
         <!-- Loading Spinner -->
@@ -36,38 +46,34 @@
 <script>
     $(document).ready(function() {
         var ctx = document.getElementById('dataChart').getContext('2d');
+        var donutCtx = document.getElementById('donutChart').getContext('2d');
         var dados = @json($dados ?? []);
         var index = 0;
+        var interval = 5; // Number of data points to average
+        var chartData = [];
+        var averages = [];
+        var labels = ['Umidade do Solo', 'Temperatura do Solo', 'Umidade do Ar', 'Temperatura do Ar', 'Condutividade do Solo', 'pH do Solo', 'Nitrogênio', 'Fósforo', 'Potássio'];
+        var colors = [
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(153, 102, 255, 0.6)'
+        ];
 
         var dataChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Umidade do Solo', 'Temperatura do Solo', 'Umidade do Ar', 'Temperatura do Ar', 'Condutividade do Solo', 'pH do Solo', 'Nitrogênio', 'Fósforo', 'Potássio'],
+                labels: labels,
                 datasets: [{
                     label: 'Medições',
                     data: [], // Initial empty data
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(153, 102, 255, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(153, 102, 255, 1)'
-                    ],
+                    backgroundColor: colors,
+                    borderColor: colors.map(color => color.replace('0.6', '1')),
                     borderWidth: 1
                 }]
             },
@@ -80,11 +86,25 @@
             }
         });
 
+        var donutChart = new Chart(donutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Average Values',
+                    data: [], // Will be filled later
+                    backgroundColor: colors,
+                    borderColor: colors.map(color => color.replace('0.6', '1')),
+                    borderWidth: 1
+                }]
+            }
+        });
+
         function updateChart() {
             try {
                 if (index < dados.length) {
                     var dado = dados[index++];
-                    dataChart.data.datasets[0].data = [
+                    chartData.push([
                         dado.soilHumidity,
                         dado.soilTemperature,
                         dado.airHumidity,
@@ -94,12 +114,39 @@
                         dado.nitrogen,
                         dado.phosphorus,
                         dado.potassium
-                    ];
+                    ]);
+                    dataChart.data.datasets[0].data = chartData[chartData.length - 1];
                     dataChart.update();
-                    setTimeout(updateChart, 1000); // Update every 20 seconds
+
+                    if (chartData.length >= interval) {
+                        var sum = Array(chartData[0].length).fill(0);
+                        chartData.forEach(row => {
+                            row.forEach((value, i) => {
+                                sum[i] += value;
+                            });
+                        });
+                        averages = sum.map(s => s / chartData.length);
+
+                        // Update donut chart with averages
+                        donutChart.data.datasets[0].data = averages;
+                        donutChart.update();
+
+                        // Display the average values
+                        $('#averageValuesContainer').empty(); // Clear previous values
+                        labels.forEach((label, i) => {
+                            $('#averageValuesContainer').append(`<p style="color: ${colors[i].replace('0.6', '1')}">${label}: ${averages[i].toFixed(2)}</p>`);
+                        });
+
+                        // Hide the bar chart and show the donut chart
+                        $('#barChartContainer').hide();
+                        $('#averageValuesContainer').show();
+                        $('#donutChartContainer').show();
+                    } else {
+                        setTimeout(updateChart, 1000); // Update every 20 seconds
+                    }
                 } else {
                     index = 0;
-                    setTimeout(updateChart, 1000); // Restart cycle
+                    setTimeout(updateChart, 10000); // Restart cycle
                 }
             } catch (error) {
                 alert('Failed to load data. Please try again later.');
@@ -113,12 +160,14 @@
 
             setTimeout(function() {
                 $('#loadingSpinner').hide(); // Hide loading spinner after delay
-                $('.chart-container').show(); // Show the chart
+                $('#barChartContainer').show(); // Show the bar chart
                 updateChart(); // Start the chart update process
             }, 1000); // Delay to simulate loading
         });
 
-        $('.chart-container').hide(); // Hide the chart initially
+        $('#barChartContainer').hide(); // Hide the chart initially
+        $('#donutChartContainer').hide(); // Hide the donut chart initially
+        $('#averageValuesContainer').hide(); // Hide the average values container initially
     });
 </script>
 @endsection

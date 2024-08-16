@@ -12,15 +12,15 @@ class DadosController extends Controller
     {
         try {
             $dadosValidados = $request->validate([
-                'soilHumidity' => 'required|numeric',
-                'soilTemperature' => 'required|numeric',
-                'airHumidity' => 'required|numeric',
-                'airTemperature' => 'required|numeric',
-                'soilConductivity' => 'required|numeric',
-                'soilPH' => 'required|numeric',
-                'nitrogen' => 'required|numeric',
-                'phosphorus' => 'required|numeric',
-                'potassium' => 'required|numeric',
+                'soilHumidity' => 'nullable|numeric',
+                'soilTemperature' => 'nullable|numeric',
+                'airHumidity' => 'nullable|numeric',
+                'airTemperature' => 'nullable|numeric',
+                'soilConductivity' => 'nullable|numeric',
+                'soilPH' => 'nullable|numeric',
+                'nitrogen' => 'nullable|numeric',
+                'phosphorus' => 'nullable|numeric',
+                'potassium' => 'nullable|numeric',
             ]);
 
             DadoSensor::create($dadosValidados);
@@ -31,6 +31,7 @@ class DadosController extends Controller
             return response()->json(['status' => 'error', 'message' => $th->getMessage()]);
         }
     }
+
 
     public function exibirDados()
     {
