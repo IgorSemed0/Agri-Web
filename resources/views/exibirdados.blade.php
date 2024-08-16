@@ -49,7 +49,7 @@
         var donutCtx = document.getElementById('donutChart').getContext('2d');
         var dados = @json($dados ?? []);
         var index = 0;
-        var interval = 5; // Number of data points to average
+        var interval = 6; // Number of data points to average
         var chartData = [];
         var averages = [];
         var labels = ['Umidade do Solo', 'Temperatura do Solo', 'Umidade do Ar', 'Temperatura do Ar', 'Condutividade do Solo', 'pH do Solo', 'Nitrogênio', 'Fósforo', 'Potássio'];
@@ -142,7 +142,7 @@
                         $('#averageValuesContainer').show();
                         $('#donutChartContainer').show();
                     } else {
-                        setTimeout(updateChart, 1000); // Update every 20 seconds
+                        setTimeout(updateChart, 1000); // Update every 1 seconds
                     }
                 } else {
                     index = 0;

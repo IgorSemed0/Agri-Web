@@ -10,15 +10,15 @@ class CreateDadosSensoresTable extends Migration
     {
         Schema::create('dados_sensores', function (Blueprint $table) {
             $table->id();
-            $table->decimal('soilHumidity', 8, 2)->nullable();
-            $table->decimal('soilTemperature', 8, 2)->nullable();
-            $table->decimal('airHumidity', 8, 2)->nullable();
-            $table->decimal('airTemperature', 8, 2)->nullable();
-            $table->decimal('soilConductivity')->nullable();
-            $table->decimal('soilPH', 8, 2)->nullable();
-            $table->decimal('nitrogen')->nullable();
-            $table->decimal('phosphorus')->nullable();
-            $table->decimal('potassium')->nullable();
+            $table->unsignedInteger('soilHumidity')->nullable();
+            $table->unsignedInteger('soilTemperature')->nullable();
+            $table->unsignedInteger('airHumidity')->nullable();
+            $table->unsignedInteger('airTemperature')->nullable();
+            $table->unsignedInteger('soilConductivity')->nullable();
+            $table->unsignedInteger('soilPH')->nullable();
+            $table->unsignedInteger('nitrogen')->nullable();
+            $table->unsignedInteger('phosphorus')->nullable();
+            $table->unsignedInteger('potassium')->nullable();
             $table->timestamps();
         });
     }
