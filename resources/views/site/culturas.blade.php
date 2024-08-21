@@ -22,10 +22,7 @@
  <br><br><br>
 
 
-    <p style="font-size: 23px;
-">Explore o Mapa Agrícola do Agri-web e saiba quando plantar cada cultura.<br> Navegue pelo mapa para encontrar informações sobre o momento ideal de plantio para cada tipo de planta.<br> Tome decisões informadas e aumente sua produtividade agrícola!
-
-<br> Agri-web O Seu Guia para o Cultivo Ideal!  </p>
+  
 <br><br><br>
 <div class="d-flex justify-content-center position-relative">
     <form action="{{route('search')}}" method="get" class="col-6 position-relative ">

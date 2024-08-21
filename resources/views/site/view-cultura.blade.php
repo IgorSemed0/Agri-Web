@@ -4,7 +4,26 @@
     @section('conteudo')
 
     @if($culturas->isEmpty())
-    <p>Nenhum resultado encontrado.</p>
+    
+    <div class="d-flex justify-content-center position-relative">
+    <form action="{{route('search')}}" method="get" class="col-6 position-relative ">
+        <div class="input-group">
+            <input type="search" name="search" value="{{$termoPesquisa }}" id="search" class="form-control pl-5 position-absolute top-0 start-0 pt-2  " style="height:50px; width: 120%; max-width: 650px ;border-radius: 20px;" placeholder="Faça a sua pesquisa na Agri-Web">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="23" fill="currentColor" class="bi bi-search ml-4 mt-3 position-relative top-60 end-0 translate-middle-y" type="submit" style="color:black" viewBox="0 0 16 16" >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+
+
+        </div>
+    </form>
+</div>
+<img src="assets/sorry-new.jpg" alt="" style="align-contents:center;
+ height:92vh; width:100%;
+ background-size:cover;
+ background-repeat:no-repeat;">
+
+
+   
 @else
 <br>
 <div class="d-flex justify-content-center position-relative">
@@ -25,9 +44,9 @@
     
 <br>
         
-        <div class="card ml-1">
+        <div class="card mx-2">
   <div class="card-body">
-    <h5 class="card-title"> {{$cultura->cultureTittle}}</h5>
+    <h5 class="card-title text-center"> {{$cultura->cultureTittle}}</h5>
    
    <br>
    <p>No Agri-web, estamos aqui para ajudá-lo a determinar o momento ideal para plantar sua cultura ideal "{{$cultura->cultureTittle}}". Para o melhor crescimento da sua cultura , precisamos de alguns dados importantes:</p>
@@ -46,7 +65,7 @@
    </ul>
  
 
-    <a href="#" class="btn btn-primary">Botão</a>
+  
   </div>
 </div>
 <br>

@@ -3,45 +3,27 @@
 
 @section('conteudo')
 
-<div style="text-align: center; background-color:rgb(110, 62, 0); color:white;" class="container-fluid p-5">
-    <h1>Bem Vindo ao nosso site</h1>
-    <p></p>
-</div>
-<div style="background-image: url({{ asset('assets/img/logo/1.jpg') }});
+
+<div  class="mx-2" style="background-image: url({{ asset('assets/img/logo/1.jpg') }});
  align-contents:center;
- height:1200px; width:100%;
+ height:85vh; width:100%;
  background-size:cover;
  background-repeat:no-repeat;
+ border-button:20px;
 
- ">
-    <div style="
-     color:white;
-     text-align:center;
- ">
-        <br><br><br>
-        <h1 style="
-        color:white;
-        margin-left:4%;
-        margin-right: 4px;
-    ">Com a Nossa plataforma podera examinar o estado do seu solo para cultivo!</h1>
+  
+ "> <h1 class="text-center pt-5" style="color:#556B2F">Criando Plantações saudável</h1></div>
+ <br><br>
+ <div class="">
+   <h1 class="text-center text-md " style="color:#7B3F00; font-size:27px;">O que é o Agri-Web?</h1>  
+   <p class="text-center" style="font-size:18px; color:black"> Melhora a forma como  plantas, crias e gerencias o teu cultivo com o <strong>Agri-Web </strong> </p>  
 
-    <br>
-
-
-
-
-        <button style="
-        background-color:rgb(107, 116, 0);
-        color:rgb(110, 62, 0);
-        height:40px;
-        width:200px;
-        border-radius:10px;
-        border: 2px solid #0000;
-
-        "><a style="color:white; text-decoration: none;" href="{{ route('culturas') }}">Começar Inspeçao</a></button>
-    </div>
 </div>
-<!-- Modal -->
+
+
+      
+
 
 
 @endsection
+

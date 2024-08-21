@@ -13,7 +13,7 @@
   <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
  <style>
     nav{
-        background-color: rgb(92, 63, 31);
+        background-color:#556B2F ;
         height: 4.4em;
         position: fixed;
         position: fixed;
