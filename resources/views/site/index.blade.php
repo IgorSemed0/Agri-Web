@@ -45,7 +45,7 @@
     </div>
 <br><br><br>
   <div><h3 class="text-center text-md " style="color:#7B3F00; font-size:28px;"> <strong>Integração com Dados Climáticos</strong></h3></div>
-
+<img src="assets/img/logo/ph.jpg" alt="">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
