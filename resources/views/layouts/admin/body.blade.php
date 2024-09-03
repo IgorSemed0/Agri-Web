@@ -69,7 +69,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                                    <span class="ml-2 d-none d-lg-inline text-white small">Percy Semedo</span>
+                                    <span class="ml-2 d-none d-lg-inline text-white small">  </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
@@ -102,16 +102,16 @@
                 </nav>
                 <!-- Topbar -->
                 @yield('conteudo')
-
+<br><br><br><br><br>
              <!-- Footer -->
-      {{-- <footer class="footer bottom-0 ">
+    <footer class="footer bottom-0 ">
         <div class="container my-auto py-2">
           <div class="copyright text-center my-auto">
             <span>copyright &copy; Agri-Web
             </span>
           </div>
         </div>
-      </footer> --}}
+      </footer> 
     </div>
   </div>
 <style>

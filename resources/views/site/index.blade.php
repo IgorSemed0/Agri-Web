@@ -121,7 +121,7 @@
 <br><br>
 <h3 style="color:#556B2F" class="text-center">Perguntas Frequentes </h3>
 <br><br>
-<div class="mx-5">
+<div class="mx-5" style="font-size:20px">
 <details>
   <summary style="color:#7B3F00">1. Como posso conectar e calibrar os sensores NPK 7-em-1 e DHT11?</summary>
   <p style="color:black">Os sensores NPK 7-em-1 e DHT11 já vêm calibrados de fábrica. Se você encontrar algum problema com eles, por favor, entre em contato com o representante autorizado para assistência.</p>
@@ -129,12 +129,16 @@
 
 <details class="pt-2">
   <summary style="color:#7B3F00">2. Como interpretar os dados fornecidos pelos sensores?</summary>
-  <p style="color:black">Explicações sobre como ler e utilizar os dados dos sensores para tomar decisões agrícolas informadas.</p>
+  <p style="color:black">Os dados dos sensores mostram níveis de nutrientes e condições ambientais.
+     Consulte nosso guia de interpretação para entender cada valor e como ele afeta seu cultivo.</p>
+<!--Aqui vou colocar um link para ir na ajuda.-->
 </details>
 
 <details class="pt-2" >
   <summary style="color:#7B3F00">3. Como comparar dados históricos com dados atuais?</summary>
-  <p style="color:black">Instruções sobre como usar as funcionalidades do site para comparar e analisar dados ao longo do tempo.</p>
+  <p style="color:black">Utilize a ferramenta de análise de dados do nosso site.
+     Selecione o período desejado e visualize gráficos e 
+    relatórios que comparam os dados passados com os atuais.</p>
 </details>
 
 <details class="pt-2">
@@ -153,20 +157,21 @@
 
 <details class="pt-2">
   <summary style="color:#7B3F00">5. Como usar o diário agrícola para registrar minhas atividades?</summary>
-  <p style="color:black">Orientações sobre como utilizar o diário agrícola para manter um registro detalhado das práticas e observações.</p>
+  <p style="color:black">Acesse a seção de diário agrícola em nosso site, 
+    insira as atividades realizadas e detalhes relevantes.
+     Isso ajudará a manter um registro organizado e acessível.</p>
 </details>
 
 <details  class="pt-2">
   <summary style="color:#7B3F00">6. Como posso entrar em contato com o suporte se tiver problemas?</summary>
-  <p style="color:black">Informações sobre como acessar o suporte técnico e resolver quaisquer problemas ou dúvidas.</p>
+  <p style="color:black">O suporte pode ser contatado através do formulário de contato em nosso site, por e-mail ou telefone. Verifique a seção de suporte para as informações de contato.</p>
 </details>
 
 <details class="pt-2">
   <summary style="color:#7B3F00">7. O site pode ajudar a diagnosticar problemas com as culturas?</summary>
-  <p style="color:black">Perguntas sobre se o site oferece ferramentas ou informações para identificar e resolver problemas relacionados às plantas e ao cultivo.</p>
+  <p style="color:black">Atualmente, o site não oferece ferramentas específicas para diagnosticar problemas com as culturas. No entanto, estamos considerando adicionar essa funcionalidade no futuro para fornecer suporte adicional. Fique atento a atualizações!</p>
 </details>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
 <script>
   
