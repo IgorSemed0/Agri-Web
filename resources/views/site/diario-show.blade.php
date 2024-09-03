@@ -13,15 +13,15 @@
                 placeholder="Title">
 
             <button type="submit" class="d-inline-block ml-auto mr-3"
-                style="background-color: rgb(107, 116, 0); height: 40px; width: 150px; border-radius: 12px; border: 1px solid">
-                Guardar
+                style="background-color:#7B3F00; color:#ffff; height: 40px; width: 150px; border-radius: 12px; border: 1px solid #ffff">
+                <strong>Guardar</strong>
             </button>
         </div>
 
         <br>
 
-        <textarea name="text" id="text"
-            style="width: 400px; height:70%; padding-left: 12px; padding-right: 12px; font-size: 20px; margin:5px;">
+        <textarea name="text" id="text" class=" mx-5" cols="0" rows="40" 
+            style="width: 95%; ; padding-left: 8px; padding-right: 10px; font-size: 20px; ">
             {{ $diario->text }}
         </textarea>
     </form>
