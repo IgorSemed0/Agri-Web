@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
 use App\Models\Cultura;
+use App\Models\MaxValorController;
 
 class DadosController extends Controller
 {
@@ -32,17 +33,34 @@ class DadosController extends Controller
         }
     }
 
-
     public function exibirDados()
     {
         $dados = DadoSensor::all();
         $culturas = Cultura::all();
+        $maxvalores = MaxValorController::all();
         if ($dados->isEmpty()) {
             return view('exibirdados', ['mensagem' => 'Nenhum dado disponível.']);
         }
+   
+        $dadosFiltrados = $dados->filter(function ($dado) use ($culturas, $maxvalores) {
+        // Encontrar o valor da cultura correspondente
+        $cultura = $culturas->firstWhere('sensor_type', $dado->sensor_type);
+        // Encontrar o valor máximo correspondente
+        $max = $maxvalores->firstWhere('sensor_type', $dado->sensor_type);
+        
+        // Verifica se o valor do sensor está entre os limites definidos pela cultura e os valores máximos permitidos
+        return $cultura && $max && 
+               $dado->valor >= $cultura->valor_minimo && 
+               $dado->valor <= $cultura->valor_maximo && 
+               $dado->valor <= $max->valor_maximo;
+    });
 
-        $dadosComuns = $culturas->intersect($dados);
+    // Retorna a view com os dados filtrados
+    return view('exibirdados', [
+        'dadosFiltrados' => $dadosFiltrados,'dados' => $dados // Exibe apenas os dados que atendem aos critérios
+    ]);
+}
 
-        return view('exibirdados', ['dadosComuns' => $dadosComuns, 'dados' => $dados]);
-    }
+  
+      
 }
