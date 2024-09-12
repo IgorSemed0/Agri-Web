@@ -83,9 +83,6 @@ class DadosController extends Controller
         }
 
 
-        if (empty($resultados)) {
-            return view('exibirdados', ['mensagem' => 'Nenhuma correspondência de cultura encontrada.']);
-        }
 
         return view('exibirdados', ['resultados' => $resultados, 'dados' => $dados]);
     }
