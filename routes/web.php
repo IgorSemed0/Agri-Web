@@ -8,7 +8,7 @@ use App\Http\Controllers\CulturaController;
 use App\Http\Controllers\CulturaControllers;
 
 Route::get('/', function () {
-    return view('site.index');
+    return view('site.Temp.index');
 });
 
 Route::get('/teste', function() {
