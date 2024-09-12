@@ -47,7 +47,7 @@
       
     <div class="col-md-4 mb-4">
     <div class="card card-custom">
-        <img src="{{ asset('images/arroz1.jpeg') }}" class="card-img-top" alt="Imagem do Arroz">
+        <img src="assets/img/logo/arroz1.jpeg" class="card-img-top w-70" alt="Imagem do Arroz">
         <div class="card-body">
             <h5 class="card-title">Arroz</h5>
             <p class="card-text">
@@ -67,7 +67,7 @@
 <!---->
 <div class="col-md-4 mb-4">
     <div class="card card-custom">
-        <img src="{{ asset('images/banana.jpeg') }}" class="card-img-top" alt="Imagem da Banana">
+        <img src="assets/img/banana.jpeg" class="card-img-" alt="Imagem da Banana">
         <div class="card-body">
             <h5 class="card-title">Banana</h5>
             <p class="card-text">
@@ -85,7 +85,7 @@
 <!--3card-->
 <div class="col-md-4 mb-4">
     <div class="card card-custom">
-        <img src="{{ asset('images/mandioca.jpeg') }}" class="card-img-top" alt="Imagem da Mandioca">
+        <img src="assets/img/mandioca.jpeg" class=" mt-3 rounded mx-auto d-block " alt="Imagem da Mandioca">
         <div class="card-body">
             <h5 class="card-title">Mandioca</h5>
             <p class="card-text">
