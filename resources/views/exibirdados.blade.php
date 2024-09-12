@@ -6,12 +6,28 @@
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
 
-    @if (isset($mensagem))
-        <div style="background-color:rgb(110, 62, 0);" class="alert alert-info" role="alert">
-            {{ $mensagem }}
-        </div>
-    @else
+    @if(isset($mensagem))
+    <p>{{ $mensagem }}</p>
+@else
+    <h2>Correspondências Encontradas</h2>
+    @foreach($resultados as $dado)
+                <tr>
+                    <td>{{ $dado['cultura'] }}</td>
+                    <td>{{ $dado['dados_sensor']['soilPH'] }}</td>
+                    <td>{{ $dado['dados_sensor']['soilTemperature'] }}</td>
+                    <td>{{ $dado['dados_sensor']['airTemperature'] }}</td>
+                    <td>{{ $dado['dados_sensor']['airHumidity'] }}</td>
+                    <td>{{ $dado['dados_sensor']['nitrogen'] }}</td>
+                    <td>{{ $dado['dados_sensor']['phosphorus'] }}</td>
+                    <td>{{ $dado['dados_sensor']['potassium'] }}</td>
+                    <td>{{ $dado['dados_sensor']['soilConductivity'] }}</td>
+                    <td>{{ $dado['dados_sensor']['soilHumidity'] }}</td>
+                </tr>
+            @endforeach
+
         <!-- Start Analysis Button and Initial Message -->
+
+        <!--Comentando -->
         <div id="startContainer" class="text-center">
             <p id="startMessage">Click the button to start data analysis.</p>
             <button id="startButton" class="btn btn-primary">Start Analysis</button>
