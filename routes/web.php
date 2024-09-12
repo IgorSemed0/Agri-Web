@@ -6,7 +6,7 @@ use App\Http\Controllers\DiarioController;
 use App\Http\Controllers\CulturaController;
 
 Route::get('/', function () {
-    return view('site.index');
+    return view('site.Temp.index');
 });
 
 Route::get('/teste', function() {
