@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/teste', function() {
-    return view('layouts.admin.body');
+    return 'FuncionaGET!';
 });
 
 /* Cultura */
