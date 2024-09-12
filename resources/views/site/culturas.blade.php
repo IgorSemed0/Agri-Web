@@ -1,7 +1,7 @@
-@extends('layouts.admin.body')
-@section('titulo','Home')
+@extends('layouts.temp.body')
 
 @section('conteudo')
+
 <style>
     .card-custom {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,18 +44,18 @@
 <br><br><br>
 <div class="container my-4">
     <div class="row d-flex justify-content-center">
-      
+
     <div class="col-md-4 mb-4">
     <div class="card card-custom">
         <img src="assets/img/logo/arroz1.jpeg" class="card-img-top w-70" alt="Imagem do Arroz">
         <div class="card-body">
             <h5 class="card-title">Arroz</h5>
             <p class="card-text">
-                O arroz é uma cultura que se desenvolve melhor em solo com uma umidade controlada e temperatura adequada. 
-                Para uma boa colheita, o <strong>pH do solo</strong> deve estar entre 5.5 e 6.5. A <strong>umidade do solo</strong> 
-                deve ser mantida entre 70% e 80% para garantir a absorção ideal de nutrientes. 
-                A <strong>temperatura do solo</strong> ideal varia entre 25°C e 30°C, enquanto a <strong>temperatura do ar</strong> 
-                deve estar entre 20°C e 35°C. A <strong>condutividade do solo</strong> deve ser monitorada para evitar a salinidade excessiva. 
+                O arroz é uma cultura que se desenvolve melhor em solo com uma umidade controlada e temperatura adequada.
+                Para uma boa colheita, o <strong>pH do solo</strong> deve estar entre 5.5 e 6.5. A <strong>umidade do solo</strong>
+                deve ser mantida entre 70% e 80% para garantir a absorção ideal de nutrientes.
+                A <strong>temperatura do solo</strong> ideal varia entre 25°C e 30°C, enquanto a <strong>temperatura do ar</strong>
+                deve estar entre 20°C e 35°C. A <strong>condutividade do solo</strong> deve ser monitorada para evitar a salinidade excessiva.
                 A <strong>presença de nitrogênio</strong>, <strong>fósforo</strong> e <strong>potássio</strong> são essenciais para o crescimento vigoroso do arroz.
             </p>
             <a href="#" class="btn btn-primary">Saiba mais</a>
@@ -71,10 +71,10 @@
         <div class="card-body">
             <h5 class="card-title">Banana</h5>
             <p class="card-text">
-                A banana prospera em solo bem drenado e rico em nutrientes. Para garantir uma boa colheita, o <strong>pH do solo</strong> 
-                deve estar entre 5.5 e 7.0. A <strong>umidade do solo</strong> deve ser alta, variando entre 60% e 80%, e a <strong>temperatura do solo</strong> 
-                ideal está entre 24°C e 30°C. A <strong>temperatura do ar</strong> deve estar entre 20°C e 30°C para favorecer o crescimento. 
-                É importante monitorar a <strong>condutividade do solo</strong> para garantir que não haja excesso de salinidade. 
+                A banana prospera em solo bem drenado e rico em nutrientes. Para garantir uma boa colheita, o <strong>pH do solo</strong>
+                deve estar entre 5.5 e 7.0. A <strong>umidade do solo</strong> deve ser alta, variando entre 60% e 80%, e a <strong>temperatura do solo</strong>
+                ideal está entre 24°C e 30°C. A <strong>temperatura do ar</strong> deve estar entre 20°C e 30°C para favorecer o crescimento.
+                É importante monitorar a <strong>condutividade do solo</strong> para garantir que não haja excesso de salinidade.
                 Níveis adequados de <strong>nitrogênio</strong>, <strong>fósforo</strong> e <strong>potássio</strong> são cruciais para o desenvolvimento das bananas.
             </p>
             <a href="#" class="btn btn-primary">Saiba mais</a>
@@ -89,10 +89,10 @@
         <div class="card-body">
             <h5 class="card-title">Mandioca</h5>
             <p class="card-text">
-                A mandioca é uma planta resistente que cresce melhor em solo com boa drenagem e rica em matéria orgânica. O <strong>pH do solo</strong> 
-                ideal é entre 5.5 e 6.5. A <strong>umidade do solo</strong> deve ser moderada, entre 60% e 70%, para evitar o apodrecimento das raízes. 
-                A <strong>temperatura do solo</strong> deve estar entre 25°C e 30°C, e a <strong>temperatura do ar</strong> deve estar entre 20°C e 35°C. 
-                O <strong>nível de condutividade do solo</strong> deve ser monitorado para garantir uma nutrição equilibrada. Níveis adequados de 
+                A mandioca é uma planta resistente que cresce melhor em solo com boa drenagem e rica em matéria orgânica. O <strong>pH do solo</strong>
+                ideal é entre 5.5 e 6.5. A <strong>umidade do solo</strong> deve ser moderada, entre 60% e 70%, para evitar o apodrecimento das raízes.
+                A <strong>temperatura do solo</strong> deve estar entre 25°C e 30°C, e a <strong>temperatura do ar</strong> deve estar entre 20°C e 35°C.
+                O <strong>nível de condutividade do solo</strong> deve ser monitorado para garantir uma nutrição equilibrada. Níveis adequados de
                 <strong>nitrogênio</strong>, <strong>fósforo</strong> e <strong>potássio</strong> são essenciais para um crescimento saudável e uma boa colheita.
             </p>
             <a href="#" class="btn btn-primary">Saiba mais</a>

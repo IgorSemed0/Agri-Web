@@ -6,6 +6,8 @@ use App\Http\Controllers\DiarioController;
 use App\Http\Controllers\CulturaController;
 // routes/web.php ou routes/api.php
 use App\Http\Controllers\CulturaControllers;
+use App\Http\Controllers\YourController;
+
 
 Route::get('/', function () {
     return view('site.Temp.index');
@@ -40,3 +42,4 @@ Route::middleware([
 });
 
 
+Route::get('/get-latest-data', [YourController::class, 'getLatestData']);

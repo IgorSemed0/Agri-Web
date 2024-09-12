@@ -12,7 +12,7 @@ class CulturaController extends Controller
         return view('site.culturas');
     }
     public function home(){
-        return view('site.index');
+        return view('site.Temp.index');
     }
 
    public function suporte(){
@@ -21,29 +21,29 @@ class CulturaController extends Controller
    public function search(Request $request): View
    {
        $termoPesquisa = $request->input('search');
-       
+
        $culturas = Cultura::where('cultureTittle', 'LIKE', '%' . $termoPesquisa . '%')->get();
-   
-       $valores = MaxValorController::all(); 
-       
+
+       $valores = MaxValorController::all();
+
        $dados = [];
-       
-       
+
+
        foreach ($culturas as $index => $cultura) {
            $dados[] = [
-            
+
                'cultura' => $cultura,
                'valormax' => $valores->get($index) ?? null
            ];
-           
+
        }
-   
-       
+
+
        return view('site.view-cultura', [
            'dados' => $dados,
            'termoPesquisa' => $termoPesquisa,
        ]);
    }
-   
+
 
 }
