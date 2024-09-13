@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DadoSensor;
 use App\Models\Cultura;
+use App\Events\NewSensorData;
 
 class DadosController extends Controller
 {
@@ -26,32 +27,31 @@ class DadosController extends Controller
             DadoSensor::create($dadosValidados);
 
             return response()->json(['status' => 'success', 'message' => 'Dados recebidos e salvos com sucesso.']);
-
         } catch (\Throwable $th) {
             return response()->json(['status' => 'error', 'message' => $th->getMessage()]);
         }
     }
- 
+
     public function exibirDados()
     {
         // Pegar todos os dados de sensores e culturas
         $dados = DadoSensor::all();
         $culturas = Cultura::all();
-        
+
         if ($dados->isEmpty() || $culturas->isEmpty()) {
             return view('exibirdados', ['mensagem' => 'Nenhum dado disponível ou cultura registrada.']);
         }
-    
+
         // Array que vai armazenar os resultados
         $resultados = [];
-    
+
         // Iterar sobre os dados do sensor
         foreach ($dados as $dado) {
             // Iterar sobre as culturas e verificar os parâmetros
             foreach ($culturas as $cultura) {
                 // Comparar os dados do sensor com os valores da cultura
                 $condicoes = [
-                    $dado->soilPH >= $cultura->soilPH, 
+                    $dado->soilPH >= $cultura->soilPH,
                     $dado->soilTemperature >= $cultura->soilTemperature,
                     $dado->airTemperature >= $cultura->airTemperature,
                     $dado->airHumidity >= $cultura->airHumidity,
@@ -61,7 +61,7 @@ class DadosController extends Controller
                     $dado->soilConductivity >= $cultura->soilConductivity,
                     $dado->soilHumidity >= $cultura->soilHumidity,
                 ];
-    
+
                 // Se todas as condições forem verdadeiras, adicionar à lista de resultados
                 if (count(array_filter($condicoes)) === count($condicoes)) {
                     $resultados[] = [
@@ -86,4 +86,22 @@ class DadosController extends Controller
 
         return view('exibirdados', ['resultados' => $resultados, 'dados' => $dados]);
     }
+
+
+    public function store(Request $request)
+    {
+        // Validação e armazenamento dos dados
+        $dados = DadoSensor::create($request->all());
+
+        // Dispara o evento
+        event(new NewSensorData($dados));
+
+        return response()->json(['message' => 'Dados enviados com sucesso!'], 200);
+    }
+    public function obterDadosAtuais()
+    {
+        $dados = DadoSensor::latest()->first(); // Obtém o dado mais recente
+        return response()->json($dados);
+    }
+
 }
