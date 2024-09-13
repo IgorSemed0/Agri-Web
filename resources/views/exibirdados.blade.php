@@ -110,8 +110,8 @@
                     });
                 }
 
-                // Intervalo para buscar dados a cada 1 segundo
-                setInterval(fetchLatestData, 1000);
+                // Intervalo para buscar dados a cada 0.5ms segundo
+                setInterval(fetchLatestData, 50);
 
                 // Evento de clique no botão de análise
                 $('#startButton').click(function() {
