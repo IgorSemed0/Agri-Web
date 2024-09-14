@@ -103,9 +103,49 @@
 
                             dataChart.data.datasets[0].data = newData;
                             dataChart.update();
+
+                            // Envia os dados ao backend para análise e comparação de culturas
+                            sendRealTimeDataToBackend(newData);
                         },
                         error: function(xhr, status, error) {
                             console.error('Erro ao buscar dados: ', error);
+                        }
+                    });
+                }
+
+                // Função para enviar os dados em tempo real ao backend para comparação
+                function sendRealTimeDataToBackend(data) {
+                    $.ajax({
+                        url: '/comparar-culturas', // Rota que lida com a comparação de culturas no backend
+                        method: 'POST',
+                        data: {
+                            soilHumidity: data[0],
+                            soilTemperature: data[1],
+                            airHumidity: data[2],
+                            airTemperature: data[3],
+                            soilConductivity: data[4],
+                            soilPH: data[5],
+                            nitrogen: data[6],
+                            phosphorus: data[7],
+                            potassium: data[8],
+                            _token: '{{ csrf_token() }}' // Para enviar o token CSRF em requisições POST
+                        },
+                        success: function(response) {
+                            // Atualiza o frontend com a cultura recomendada
+                            if (response.recomendacao) {
+                                $('#resultsContainer').html(`
+                        <h2>Correspondência de Cultura Encontrada</h2>
+                        <div class="alert alert-success">
+                            <strong>Cultura recomendada: </strong> ${response.recomendacao}
+                        </div>
+                    `);
+                            } else {
+                                $('#resultsContainer').html(
+                                    '<p>Nenhuma correspondência de cultura encontrada.</p>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erro ao enviar dados: ', error);
                         }
                     });
                 }

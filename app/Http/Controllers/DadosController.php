@@ -103,5 +103,46 @@ class DadosController extends Controller
         $dados = DadoSensor::latest()->first(); // Obtém o dado mais recente
         return response()->json($dados);
     }
+    public function compararCulturas(Request $request)
+    {
+        $dadosValidados = $request->validate([
+            'soilHumidity' => 'nullable|numeric',
+            'soilTemperature' => 'nullable|numeric',
+            'airHumidity' => 'nullable|numeric',
+            'airTemperature' => 'nullable|numeric',
+            'soilConductivity' => 'nullable|numeric',
+            'soilPH' => 'nullable|numeric',
+            'nitrogen' => 'nullable|numeric',
+            'phosphorus' => 'nullable|numeric',
+            'potassium' => 'nullable|numeric',
+        ]);
 
+        $culturas = Cultura::all();
+
+        // Array para armazenar os resultados
+        $resultado = null;
+
+        // Iterar sobre as culturas e verificar os parâmetros
+        foreach ($culturas as $cultura) {
+            $condicoes = [
+                $dadosValidados['soilPH'] >= $cultura->soilPH,
+                $dadosValidados['soilTemperature'] >= $cultura->soilTemperature,
+                $dadosValidados['airTemperature'] >= $cultura->airTemperature,
+                $dadosValidados['airHumidity'] >= $cultura->airHumidity,
+                $dadosValidados['nitrogen'] >= $cultura->nitrogen,
+                $dadosValidados['phosphorus'] >= $cultura->phosphorus,
+                $dadosValidados['potassium'] >= $cultura->potassium,
+                $dadosValidados['soilConductivity'] >= $cultura->soilConductivity,
+                $dadosValidados['soilHumidity'] >= $cultura->soilHumidity,
+            ];
+
+            // Se todas as condições forem verdadeiras, definir a cultura correspondente
+            if (count(array_filter($condicoes)) === count($condicoes)) {
+                $resultado = $cultura->cultureTittle;
+                break; // Encontrou uma correspondência, não precisa continuar verificando
+            }
+        }
+
+        return response()->json(['recomendacao' => $resultado]);
+    }
 }

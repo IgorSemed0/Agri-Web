@@ -43,3 +43,5 @@ Route::middleware([
 
 Route::get('/get-latest-data', [YourController::class, 'getLatestData']);
 Route::get('/api/dados-atuais', [DadosController::class, 'obterDadosAtuais']);
+
+Route::post('/comparar-culturas', [DadosController::class, 'compararCulturas']);
